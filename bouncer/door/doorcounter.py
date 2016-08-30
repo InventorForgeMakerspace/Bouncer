@@ -9,10 +9,10 @@ import pifacedigitalio
 pfd = pifacedigitalio.PiFaceDigital() # creates a PiFace Digtal object
 listener = pifacedigitalio.InputEventListener(chip=pfd)
 from slacker import Slacker
+import configparser
+config = configparser.ConfigParser()
 
-
-slack = Slacker('xoxb-************************************')
-
+slack = Slacker(config['slack.com']['token'])
 
 def doorclose(event):
    log = open("/tmp/doorlog.txt", "a")
@@ -21,10 +21,10 @@ def doorclose(event):
       slack.chat.post_message('#door', 'The forge door is closed at ' +time.strftime("%H:%M:%S") +' CST')
    else:
       log.write(time.strftime("%H:%M:%S") +" FALSE ALARM door is not really closed" +'\n')
-      # We're picking up noise somewhere that is causing false alerts, so this reads the pin and 
+      # We're picking up noise somewhere that is causing false alerts, so this reads the pin and
       # looks for the expected logical value every time a rising/falling edge event occurs
    log.close()
-   
+
 def dooropen(event):
    log = open("/tmp/doorlog.txt", "a")
    if pfd.input_pins[2].value:

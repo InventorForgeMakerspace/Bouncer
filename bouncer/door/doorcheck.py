@@ -9,8 +9,10 @@ import pifacedigitalio
 pfd = pifacedigitalio.PiFaceDigital(init_board=False) # creates a PiFace Digtal object
 log = open("/tmp/doorlog.txt", "a")
 from slacker import Slacker
+import configparser
+config = configparser.ConfigParser()
 
-slack = Slacker('xoxb-***************************')
+slack = Slacker(config['slack.com']['token'])
 
 
 if pfd.input_pins[3].value:
@@ -18,7 +20,7 @@ if pfd.input_pins[3].value:
    log.write(time.strftime("%H:%M:%S") +" Door is held open\n")
 else:
    log.write(time.strftime("%H:%M:%S") +" Door is normal\n")
-   
+
 if pfd.input_pins[2].value:
    log.write(time.strftime("%H:%M:%S") +" Door is open\n")
 else:

@@ -1,14 +1,17 @@
 #!/usr/bin/python3
 #
-#cron job that reboots our cable modem using a relay on a piface. LEDs sequence across the piface to indicate how 
-#many ping failures have occured before a reboot happens. 
+#cron job that reboots our cable modem using a relay on a piface. LEDs sequence across the piface to indicate how
+#many ping failures have occured before a reboot happens.
 #
 import subprocess as sp
 import pifacedigitalio
 from time import sleep
 from slacker import Slacker
+import configparser
+config = configparser.ConfigParser()
 
-slack = Slacker('xoxb-**************************')
+slack = Slacker(config['slack.com']['token'])
+
 pfd = pifacedigitalio.PiFaceDigital()
 
 fails=0
@@ -41,12 +44,12 @@ def light_led(fail_count):
       # Turn On LEDs for fail
       pfd.output_pins[x +2].value = 1
       sleep(.1)
-      
+
     else:
       # Turn on LED for blink start
       pfd.output_pins[x +2].value = 1
       sleep(.1)
-      
+
       # Turn off LED for blink end
       pfd.output_pins[x +2].value = 0
       sleep(.1)

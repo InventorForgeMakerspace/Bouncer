@@ -7,14 +7,14 @@ We use a raspberry pi attached to a piface to control a magnetic lock at the For
 
 1. Use `make` to install dependencies. You may need to prepend `sudo -H`, depending on your system's configuration.
 
-```sh
-make init
-```
+     ```sh
+    make init
+    ```
 2. Use `make` to run tests.
 
-```sh
-make test
-```
+    ```sh
+    make test
+    ```
 
 ## License
 

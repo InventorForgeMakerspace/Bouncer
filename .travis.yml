@@ -3,6 +3,8 @@ python:
 - '2.7'
 - '3.3'
 - pypy
-install: "make init"
-script: "make test"
-
+install: make init
+script: make test
+notifications:
+  slack:
+    secure: SUiYZC9KqSPmIpxFyY8ad3AB9aip+Xym1be2Ibg/GZ4z3Cf0HEqnEZE5aksxoAbNO22N4sCZVj6s//hXEaifz41VonKtMZ79LCkPyejLsMLdBEaxrVijA9G4ZSrZjir/uzFJ8CPsxnfDFDYwFF/bLlcLBTf9kf6mraoBbRgua18gHRDLWtFFkJt7K9yTk935pF8td2k8+lH5i1pNp+iY0kEzyUfNCILP9W5bWjn9E2PNW42+fhIqUsRzMvoE5gWj8cmOuECinFTYxZQbaXHIT0JHhdGqdoMD3+WSHlRVyvHVVFQHEKEc55rUeHcufyRoqzUgn9J3LL6yOsVq/JlXx9vz7SNUoAg9faLKODaqeDcVhLrvK3xhAX63a2QukNWheNJQzM4z2rzwQz6OMOmRRUyJCv1lDpWl+kihyEHE2L0iE9gN+/jpKzr5tcpzAZ0IqDlBhieuNDBf7MMl0M+5fMy/J7E9rJ4nttdwvnDlmMVO9eHZ00rPj81VPUE7o12FTeaqcJbs+GtSeLtl303AT92fQv+30LsB6gJaLA6JkAiPUSP2t5cgEd4MmY9SrbwccdCxm/uVQkusdHWWOWiZrs3mDhbWRV7FGbircYrBx6oIquR5/q3Pq434zEJHWLWi+9UIitHpNK1KCLiLxIjJEuPWrmJWr7QeHHPLUmgeOJ8=

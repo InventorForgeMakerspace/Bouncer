@@ -11,6 +11,7 @@ listener = pifacedigitalio.InputEventListener(chip=pfd)
 from slacker import Slacker
 import configparser
 config = configparser.ConfigParser()
+config.read('../../bouncer.ini')
 
 slack = Slacker(config['slack.com']['token'])
 

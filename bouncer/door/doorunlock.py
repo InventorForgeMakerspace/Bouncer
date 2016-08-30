@@ -15,6 +15,7 @@ from slacker import Slacker
 log = open("/tmp/doorlog.txt", "a")
 import configparser
 config = configparser.ConfigParser()
+config.read('../../bouncer.ini')
 
 slack = Slacker(config['slack.com']['token'])
 

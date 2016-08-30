@@ -10,7 +10,6 @@ We use a raspberry pi attached to a piface to control a magnetic lock at the For
 ```sh
 make init
 ```
-
 2. Use `make` to run tests.
 
 ```sh

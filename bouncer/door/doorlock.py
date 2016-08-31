@@ -2,19 +2,21 @@
 #
 #Lock the door.
 #
-import time
+import ConfigParser
+import logging
+from logging import config as logconfig
 import pifacedigitalio
-
-pfd = pifacedigitalio.PiFaceDigital(init_board=False)
 from slacker import Slacker
-log = open("/tmp/doorlog.txt", "a")
-import configparser
-config = configparser.ConfigParser()
-config.read('../../bouncer.ini')
+import time
 
-slack = Slacker(config['slack.com']['token'])
+if __name__ == '__main__':
+    config = configparser.ConfigParser()
+    config.read('bouncer.ini')
+    logconfig.fileConfig('bouncer.ini')
+    pfd = pifacedigitalio.PiFaceDigital(init_board=False)
 
-slack.chat.post_message('#door', 'The forge door is locked at ' +time.strftime("%H:%M:%S") +' CST' +'\n')
-log.write(time.strftime("%H:%M:%S") +" The door has been locked" +'\n')
-pfd.relays[1].value = 0
-log.close()
+    slack = Slacker(config['slack.com']['token'])
+
+    slack.chat.post_message('#door', 'The forge door is locked at ' +time.strftime("%H:%M:%S") +' CST' +'\n')
+    logging.info("The door has been locked")
+    pfd.relays[1].value = 0

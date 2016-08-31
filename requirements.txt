@@ -1,4 +1,0 @@
-configparser
-pifacecommon
-pifacedigitalio
-slacker

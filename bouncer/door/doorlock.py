@@ -2,7 +2,7 @@
 #
 #Lock the door.
 #
-import ConfigParser
+from backports import configparser
 import logging
 from logging import config as logconfig
 import pifacedigitalio

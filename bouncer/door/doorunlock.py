@@ -4,7 +4,7 @@
 #from Ubiquiti. It acts as a sort of API for Unifi APs, but all we need is one or two web calls to
 #get what we need.
 #
-import ConfigParser
+from backports import configparser
 import time
 import logging
 from logging import config as logconfig

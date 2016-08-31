@@ -7,7 +7,7 @@ from time import sleep
 import time
 import pifacedigitalio
 import slacker
-import ConfigParser
+from backports import configparser
 import logging
 from logging import config as logconfig
 
